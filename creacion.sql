@@ -2,6 +2,7 @@
 create table usuario(
 	correo varchar(40) not null,
 	contraseña varchar(20) not null,
+	pasaporte varchar(20) not null,
 	nombre_1 varchar(30),
 	nombre_2 varchar(30),
 	apellido_1 varchar(30),
