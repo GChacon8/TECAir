@@ -34,8 +34,9 @@ public class UsersController : ControllerBase
 
 
     // GET api/<UsersController>/5
+    [HttpGet]
     [AllowAnonymous]
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public IActionResult Get(int id)
     {
         var emp = _users.Users.Find(id);

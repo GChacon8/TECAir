@@ -11035,11 +11035,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\API1\\TodoApi\\TodoApi.csproj",
+      "projectUniqueName": "D:\\Bases\\TecAir\\TecAir\\API1\\TodoApi\\TodoApi.csproj",
       "projectName": "TodoApi",
-      "projectPath": "D:\\API1\\TodoApi\\TodoApi.csproj",
+      "projectPath": "D:\\Bases\\TecAir\\TecAir\\API1\\TodoApi\\TodoApi.csproj",
       "packagesPath": "C:\\Users\\noemi\\.nuget\\packages\\",
-      "outputPath": "D:\\API1\\TodoApi\\obj\\",
+      "outputPath": "D:\\Bases\\TecAir\\TecAir\\API1\\TodoApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\noemi\\AppData\\Roaming\\NuGet\\NuGet.Config",

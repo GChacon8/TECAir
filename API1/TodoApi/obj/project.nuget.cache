@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wpkEPqfU8Uc6JJPshkt5b3nXt+URYZ/MPGhsmkKmsE40tZHgdVfP4/DuaDfjsnT2nvDnrsqhdaP8G2nRkLuXtg==",
+  "dgSpecHash": "MdBHfjD9BrhZViH8gn+jZCfTdXbUZpky259jdBYonvW3vmO8IuDun9viwy2UKWS7y1rGrSMnhVE6OUdsAsyzGQ==",
   "success": true,
-  "projectFilePath": "D:\\API1\\TodoApi\\TodoApi.csproj",
+  "projectFilePath": "D:\\Bases\\TecAir\\TecAir\\API1\\TodoApi\\TodoApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\noemi\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\noemi\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

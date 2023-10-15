@@ -8,8 +8,6 @@ namespace AirAPI.Models
         public UsersdbContext(DbContextOptions<UsersdbContext> options)
             : base(options)
         {
-
-
         }
         public virtual DbSet<Users> Users { get; set; }
 
