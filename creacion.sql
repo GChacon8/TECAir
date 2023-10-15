@@ -2,7 +2,7 @@
 create table usuario(
 	correo varchar(40) not null,
 	contraseña varchar(20) not null,
-	pasaporte varchar(20) not null,
+	pasaporte varchar(20),
 	nombre_1 varchar(30),
 	nombre_2 varchar(30),
 	apellido_1 varchar(30),
@@ -16,6 +16,7 @@ create table usuario(
 --tabla del avion
 create table avion(
 	matricula varchar(40),
+	modelo varchar(255),
 	capacidad int,
 	primary key(matricula)
 );
@@ -25,7 +26,7 @@ create table aero(
 	id varchar(60) not null,
 	puerta varchar(30),
 	ciudad varchar (60),
-	nombre varchar (60),
+	nombre varchar (255),
 	matricula_avion varchar(40),
 	primary key(id)
 );
