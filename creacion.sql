@@ -34,7 +34,7 @@ create table aero(
 	 estado bool,
 	 fin varchar(60),
 	 inicio varchar(60),
-	 primary key(numero),
+	 primary key(id),
 	 foreign key(fin) references aero(id),
 	 foreign key(inicio) references aero(id)
  );
@@ -124,6 +124,7 @@ create table ejecucionxusuario(
 	foreign key (correo_usuario) references usuario(correo)
 );
 
+
 --tabla de las tarjetas del usuario
 
 create table tarjeta(
@@ -133,4 +134,11 @@ create table tarjeta(
 	correo_usuario varchar(40),
 	primary key (numero),
 	foreign key (correo_usuario) references usuario(correo)
+);
+
+create table escala(
+	id_viaje int not null,
+	id_aero varchar(60) not null,
+	foreign key(id_viaje) references viaje(id),
+	foreign key(id_aero) references aero(id)
 );
