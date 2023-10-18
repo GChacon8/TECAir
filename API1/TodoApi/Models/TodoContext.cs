@@ -18,5 +18,9 @@ public class TodoContext : DbContext
     public DbSet<TodoApi.Models.Maleta> Maleta { get; set; } = null!;
     public DbSet<TodoApi.Models.Usuario> Usuario { get; set; } = null!;
     public DbSet<TodoApi.Models.Ejecucion> Ejecucion { get; set; } = null!;
-    public DbSet<TodoApi.Models.Promocion> Promocion { get; set; } = default!;
+    public DbSet<TodoApi.Models.Promocion> Promocion { get; set; } = null!;
+    public DbSet<TodoApi.Models.Viaje> Viaje { get; set; } = null!;
+    public DbSet<TodoApi.Models.Aero> Aero { get; set; } = null!;
+    public DbSet<TodoApi.Models.Estudiante> Estudiante { get; set; } = null!;
+    public DbSet<TodoApi.Models.Tarjeta> Tarjeta { get; set; } = null!;
 }
