@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    height: 100vh;
+    padding: 100;
+    background-image: url("../Images/airplane.jpg"); 
+    background-size: cover;    
+    background-attachment: center;
+    font-family: "Poppins";
+    color: #000;
+  }
+  
+  .navbar-custom {
+    background-color: #235789;
+}
+/*#rgb(121, 163, 190);*/
