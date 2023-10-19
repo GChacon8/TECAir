@@ -11030,25 +11030,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\noemi\\.nuget\\packages\\": {}
+    "C:\\Users\\avivallo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bases\\TecAir\\TecAir\\API1\\TodoApi\\TodoApi.csproj",
+      "projectUniqueName": "C:\\Development\\Others\\Dump\\DB\\TECAir\\TecAir\\TodoApi.csproj",
       "projectName": "TodoApi",
-      "projectPath": "D:\\Bases\\TecAir\\TecAir\\API1\\TodoApi\\TodoApi.csproj",
-      "packagesPath": "C:\\Users\\noemi\\.nuget\\packages\\",
-      "outputPath": "D:\\Bases\\TecAir\\TecAir\\API1\\TodoApi\\obj\\",
+      "projectPath": "C:\\Development\\Others\\Dump\\DB\\TECAir\\TecAir\\TodoApi.csproj",
+      "packagesPath": "C:\\Users\\avivallo\\.nuget\\packages\\",
+      "outputPath": "C:\\Development\\Others\\Dump\\DB\\TECAir\\TecAir\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\noemi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\avivallo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
