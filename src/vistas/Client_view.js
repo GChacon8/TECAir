@@ -7,16 +7,35 @@ function Client_view() {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [departureDate, setDepartureDate] = useState('');
-  const [returnDate, setReturnDate] = useState('');
+ 
   const [originOptions, setOriginOptions] = useState([]);
   const [DestOptions, setDestOptions] = useState([]);
-
   const [flightsData, setFlightsData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState(null);
-  
 
-  
+  const selected_seats = [];
+  const [buttonColor, setButtonColor] = useState('btn-secondary');
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    cedula: '',
+    cardNumber: '',
+    expirationDate: '',
+    cvv: '',
+    email: '',
+    phone: '',
+  });
+
+
+
+  //Input Handler for payment info
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
 
   /*
   const flightsData = [
@@ -58,33 +77,64 @@ function Client_view() {
     console.log('Origen:', origin);
     console.log('Destino:', destination);
     console.log('Fecha de Salida:', departureDate);
-    console.log('Fecha de Regreso:', returnDate); // Nuevo campo de fecha de regreso
   };
 
-  //Botón de realizar reservación
-  const handleReserveFlight = (flight) => {
-    // Aquí se accesan a los datos de flight
-    console.log('Reservando vuelo:', flight);
-    setShowModal(true); // Abre el modal
-    console.log(showModal);
+  //Botón de realizar reservación y se tienen los datos de flight
+
+
+
+  const changeButtonColor = (id) => {
+    if (buttonColor === 'btn-secondary') {
+      setButtonColor('btn-primary');
+      selected_seats.push(id); // Puedes actualizar la lista de asientos seleccionados aquí
+    } else {
+      setButtonColor('btn-secondary');
+      // Aquí puedes eliminar el asiento de la lista de asientos seleccionados
+    }
   };
+
+
+  function changeButtonColorToBlue(id) {
+    const button = document.getElementById(id);
+    if (button) {
+      button.style.backgroundColor = 'blue';
+      selected_seats.push(id);
+      console.log(selected_seats);
+    }
+  }
+
+
+
+
+
+
+  const free_seats = () => {
+    selected_seats.splice(0, selected_seats.length);
+  }
 
   //Para elegir asientos y cerrar la reservación del vuelo
-  const handleConfirmReservation = () => {
-   // console.log('VUELO RESERVADO DESDE EL MODAL:', flight);
-   console.log("confirmar reservacion desde el modal!!!!!!!!!!!!!!");
-    setShowModal(false); // Cierra el modal después de la reserva
-  };
+
 
   //Closing the modal
   const handleModalClose = () => {
     setShowModal(false);
+    free_seats();
+
   };
-  
+
+  const handlePayment = () => {
+    //add the payment information here
+    console.log("Payment Done");
+    console.log(formData);
+    window.alert("Pago Realizado");
+    
+    setShowModal(false);
+  }
+
   // OBTENER DATOS DEL API AQUÍ
   const Data_for_reserve = () => {
     const origenes = ['Ciudad A', 'Ciudad B', 'Ciudad C', 'Ciudad D'];
-    const destinos = ['Ciudad E', 'Ciudad E', 'Ciudad F', 'Ciudad G'];
+    const destinos = ['Ciudad E', 'Ciudad F', 'Ciudad G', 'Ciudad H'];
     setOriginOptions(origenes);
     setDestOptions(destinos);
   };
@@ -95,28 +145,13 @@ function Client_view() {
 
   //Búsqueda de vuelos, colocar aquí la llamada del api y modificar "flightsData"
   const searchFlights = () => {
-    
-    // Aquí LA LLAMADA AL API probar función fetch de react
-    /*
-    fetch('URL_DE_TU_API')
-      .then((response) => response.json())
-      .then((data) => {
-        setFlightsData(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error al buscar vuelos:', error);
-        setIsLoading(false);
-      });
-    */
-  
     // Para pruebas, establece los datos de vuelo falsos aquí
     const testingflightdata = [
       {
         id: 1,
         origin: "Ciudad A",
         destination: "Ciudad E",
-        departureDate: "2023-10-20",
+        departureDate: "2023-10-08",
         departureTime: "10:00 AM",
         arrivalTime: "12:00 PM",
         price: "$200",
@@ -130,13 +165,17 @@ function Client_view() {
         arrivalTime: "12:00 PM",
         price: "$900",
       },
-      // Puedes agregar más datos de vuelos aquí para pruebas
     ];
-  
+
     // Establece los datos de vuelo y detén la carga simulada
-    setFlightsData(testingflightdata);
     
+    setFlightsData(testingflightdata);
+
   };
+
+
+
+
 
   return (
     <div className='container'>
@@ -148,22 +187,22 @@ function Client_view() {
               TecAir
             </a>
 
-            <ul className="navbar-nav ml-auto d-flex">
-              <li className="nav-item">
-                <Link className="nav-link" to="/iniciar_sesion">
-                  TEST
+            <ul className="navbar-nav ml-auto d-flex">  
+            <li className="nav-item">
+                <Link className="nav-link" to="/Promotions">
+                  Promotions
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to="/ClientView">
-                  Cliente
+                <Link className="nav-link" to="/Create_user">
+                  Crear Usuario
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link className="nav-link" to="/TecAir/Login_Admin">
-                  Iniciar Sesión!
+                  Iniciar Sesión COMO ADMIN (QUITAR)
                 </Link>
               </li>
             </ul>
@@ -175,7 +214,7 @@ function Client_view() {
         <h1>Search</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group espace">
-          
+
             <select
               className="form-control"
               id="origin"
@@ -191,8 +230,8 @@ function Client_view() {
             </select>
           </div>
 
-          <div className="form-group espace">
-           
+          <div className="form-group space">
+
             <select
               className="form-control"
               id="destination"
@@ -219,16 +258,7 @@ function Client_view() {
             />
           </div>
 
-          <div className="form-group espace">
-            <label htmlFor="returnDate">Arrival Date:</label>
-            <input
-              type="date"
-              className="form-control"
-              id="returnDate"
-              value={returnDate}
-              onChange={(e) => setReturnDate(e.target.value)}
-            />
-          </div>
+         
 
           <button type="submit" className="btn btn-info">
             Search Flights
@@ -237,7 +267,7 @@ function Client_view() {
       </div>
 
       <div className="flights">
-        <h1>Información de Vuelos</h1>
+        <h1>Flights Information</h1>
         {flightsData.map((flight) => (
           <div key={flight.id} className="flight-card">
             <h2>
@@ -250,12 +280,10 @@ function Client_view() {
             <button
               className="button btn btn-info float-left"
               onClick={() => {
-                setSelectedFlight(flight);
                 setShowModal(true);
-              }}
-            >
-              Reservar Vuelo
-            </button>
+                setSelectedFlight(flight);
+                
+              }}>Reservar Vuelo</button>
           </div>
         ))}
       </div>
@@ -268,30 +296,74 @@ function Client_view() {
         style={{ display: showModal ? 'block' : 'none' }}
       >
         <div className="modal-dialog" role="document">
-          <div className="modal-content">
+          <div className="modal-content align_center">
             <div className="modal-header">
-              <h5 className="modal-title">Confirmar reserva</h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-                onClick={handleModalClose}
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <h5 className="modal-title">Payment</h5>
             </div>
+
             <div className="modal-body">
-              {selectedFlight && (
-                <div>
-                  <p>Vuelo de {selectedFlight.origin} a {selectedFlight.destination}</p>
-                  <p>Fecha de Salida: {selectedFlight.departureDate}</p>
-                  <p>Hora de Salida: {selectedFlight.departureTime}</p>
-                  <p>Hora de Llegada: {selectedFlight.arrivalTime}</p>
-                  <p>Precio: {selectedFlight.price}</p>
-                </div>
-              )}
-            </div>
+      <h1>Detalles de Pago</h1>
+      <form>
+        <div className="form-group">
+          <label htmlFor="first-name">Nombre:</label>
+          <input
+            type="text"
+            id="first-name"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="last-name">Apellido:</label>
+          <input
+            type="text"
+            id="last-name"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="cedula">Cédula:</label>
+          <input
+            type="text"
+            id="cedula"
+            name="cedula"
+            value={formData.cedula}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="email">Correo Electrónico:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="phone">Número de Teléfono:</label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        
+      </form>
+    </div>
+
             <div className="modal-footer">
               <button
                 type="button"
@@ -304,16 +376,26 @@ function Client_view() {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={handleConfirmReservation}
+                onClick={handlePayment}
               >
-                Reservar
+                Pay
               </button>
             </div>
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
     </div>
   );
+
 }
 
 export default Client_view;

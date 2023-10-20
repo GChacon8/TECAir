@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Css/Styles.css'; 
 
-function Login() {
+function Create_user() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ function Login() {
   // Verificación del usuario y contraseña del admin
   const handleSubmit = () => {
     if (username === 'admin' && password === 'admin') {
-      console.log('FELICIDADES HACKEO EL SISTEMA');
-      navigate('/TecAir/Administration');
+      console.log('VISTA DE CREACIÓN DE USUARIO');
+      navigate('/TecAir');
     } else {
       console.log('Credenciales incorrectas');
       //navigate('/ClientView');
@@ -31,7 +31,7 @@ function Login() {
   return (
 
     <div className="login">
-      <h1>TecAir</h1>
+      <h1>Creación de Usuario</h1>
       <div>
         <label htmlFor="username">Usuario:</label>
         <input
@@ -61,4 +61,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Create_user;

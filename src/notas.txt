@@ -1,0 +1,99 @@
+//botones en grupo
+
+
+ {/* Modal Bootstrap */}
+      <div
+        className="modal"
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: showModal ? 'block' : 'none' }}
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Sit Selection</h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={handleModalClose}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div className="modal-body">
+              {selectedFlight && (
+                <div>
+                  <div className="Fila d-flex justify-content-center space">
+                    <div className="row">
+                      <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div className="btn-group mr-2" role="group" aria-label="First group">
+                        <button type="button" className="btn btn-secondary" id="A1"  onClick={() => changeButtonColorToBlue('A1')} >A1</button>
+                          <button type="button" className="btn btn-secondary" id="A2" onClick={() => changeButtonColorToBlue('A2')}>A2</button>
+                          <button type="button" className="btn btn-secondary" id="A3">A3</button>
+
+                        </div>
+
+                        <div className="space"></div>
+
+                        <div className="btn-group mr-2" role="group" aria-label="Second group">
+                          <button type="button" className="btn btn-secondary" id="A4">A4</button>
+                          <button type="button" className="btn btn-secondary" id="A5">A5</button>
+                          <button type="button" className="btn btn-secondary" id="A6">A6</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="Fila d-flex justify-content-center space">
+                    <div className="row">
+                    <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div className="btn-group mr-2" role="group" aria-label="First group">
+                          <button type="button" className="btn btn-secondary" id="B1">B1</button>
+                          <button type="button" className="btn btn-secondary" id="B2">B2</button>
+                          <button type="button" className="btn btn-secondary" id="B3">B3</button>
+
+                        </div>
+
+                        <div className="space"></div>
+
+                        <div className="btn-group mr-2" role="group" aria-label="Second group">
+                          <button type="button" className="btn btn-secondary" id="B4">B4</button>
+                          <button type="button" className="btn btn-secondary" id="B5">B5</button>
+                          <button type="button" className="btn btn-secondary" id="B6">B6</button>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+
+                </div>
+              )}
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+                onClick={handleModalClose}
+              >
+                Cerrar
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleConfirmReservation}
+              >
+                Reservar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
