@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/TecAir/Login_Admin" element={<Login_view />} /> 
           
-          <Route path="/2" element={<Client_view />} />
+          <Route path="/TecAir" element={<Client_view />} />
           <Route path="/3" element={<Register_view />} />
           <Route path="/4" element={<Sucursal_view />} />
           <Route path="/5" element={<Sala_view />} />

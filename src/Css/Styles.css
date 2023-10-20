@@ -21,15 +21,11 @@
   justify-content: center;
 }
 
-.reserve {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
+.search {
   width: 99%;
   padding: 10px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 10px;
   border-radius: 15px;
   background-color: rgb(0, 243, 36);
 }
@@ -38,3 +34,20 @@
   padding: 10px;
 }
 
+.flights{
+  margin-top: 10px;
+  background-color: rgb(252, 143, 0);
+  text-align: center;
+}
+
+.flight-card {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.flight-card h2, .flight-card p{
+  text-align: left;
+}

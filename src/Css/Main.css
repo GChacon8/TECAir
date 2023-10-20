@@ -7,9 +7,5 @@ body {
     background-attachment: center;
     font-family: "Poppins";
     color: #000;
+    background-attachment:fixed;
   }
-  
-  .navbar-custom {
-    background-color: #235789;
-}
-/*#rgb(121, 163, 190);*/
