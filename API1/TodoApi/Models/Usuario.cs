@@ -6,7 +6,7 @@ public class Usuario
 {
     [Key]
     [Required]
-    public string Correo { get; set; }
+    public required string Correo { get; set; }
     public string? Contraseña { get; set; }
     public string? Pasaporte { get; set; }
     public string? Nombre1 { get; set; }

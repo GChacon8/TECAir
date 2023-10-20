@@ -7,7 +7,7 @@ public class Estudiante
 {
     [Key]
     [Required]
-    public string Carnet { get; set; } 
+    public required string Carnet { get; set; } 
     public string? Universidad { get; set; }
     
     [ForeignKey("Correo")]

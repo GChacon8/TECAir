@@ -7,7 +7,7 @@ public class Tarjeta
 {
     [Key]
     [Required]
-    public string Numero { get; set; } 
+    public required string Numero { get; set; } 
     public int Cs { get; set; }
     public DateTime Fecha {get; set;} //Date and Hour
     

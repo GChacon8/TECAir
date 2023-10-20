@@ -33,11 +33,11 @@ async void SetupDatabase(WebApplicationBuilder localWebApplicationBuilder)
     {
         // Connect to postgresql
         //const string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=aero_tec;";
-        const string connectionString = "Host=myserver.postgres.database.azure.com;Port=5432;Username=grupo4;Password=claveBASES.;Database=TECair;"
+        const string connectionString = "Host=tecair.postgres.database.azure.com;Port=5432;Username=grupo4;Password=claveBASES.;Database=TECair;";
         await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
-        localWebApplicationBuilder.Services.AddDbContext<AeroTecDbContext>(opt =>
-            opt.UseInMemoryDatabase("AeroTEC"));
+        localWebApplicationBuilder.Services.AddDbContext<TodoContext>(opt =>
+            opt.UseNpgsql(connectionString));
 
         Console.WriteLine("Connected to the database");
 

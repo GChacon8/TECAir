@@ -54,7 +54,7 @@ namespace TodoApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsiento(long id, Asiento asiento)
         {
-            if (id != asiento.Num)
+            if (id != asiento.Numero)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace TodoApi.Controllers
             _context.Asiento.Add(asiento);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAsiento", new { id = asiento.Num }, asiento);
+            return CreatedAtAction("GetAsiento", new { id = asiento.Numero }, asiento);
         }
 
         // DELETE: api/Asiento/5
@@ -117,7 +117,7 @@ namespace TodoApi.Controllers
 
         private bool AsientoExists(long id)
         {
-            return (_context.Asiento?.Any(e => e.Num == id)).GetValueOrDefault();
+            return (_context.Asiento?.Any(e => e.Numero == id)).GetValueOrDefault();
         }
     }
 }
