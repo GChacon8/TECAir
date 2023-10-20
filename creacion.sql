@@ -1,146 +1,124 @@
---tabla de usuario
-create table usuario(
-	correo varchar(40) not null,
-	contraseña varchar(20) not null,
-	pasaporte varchar(20),
-	nombre_1 varchar(30),
-	nombre_2 varchar(30),
-	apellido_1 varchar(30),
-	apellido_2 varchar(30),
-	telefono int,
-	chek_in bool,
-	matricula_avion varchar(30),
-	primary key(correo)
+-- Tabla de usuario
+CREATE TABLE Usuario (
+    Correo VARCHAR(40) NOT NULL,
+    Contraseña VARCHAR(20) NOT NULL,
+    Pasaporte VARCHAR(20),
+    Nombre_1 VARCHAR(30),
+    Nombre_2 VARCHAR(30),
+    Apellido_1 VARCHAR(30),
+    Apellido_2 VARCHAR(30),
+    Telefono INT,
+    Check_in BOOL,
+    PRIMARY KEY (Correo)
 );
 
---tabla del avion
-create table avion(
-	matricula varchar(40),
-	modelo varchar(255),
-	capacidad int,
-	primary key(matricula)
+-- Tabla del avión
+CREATE TABLE Avion (
+    Matricula VARCHAR(40),
+    Modelo VARCHAR(255),
+    Capacidad INT,
+    PRIMARY KEY (Matricula)
 );
 
-
-create table aero(
-	id varchar(60) not null,
-	puerta varchar(30),
-	ciudad varchar (60),
-	nombre varchar (255),
-	matricula_avion varchar(40),
-	primary key(id)
+CREATE TABLE Aero (
+    ID VARCHAR(60) NOT NULL,
+    Puerta VARCHAR(30),
+    Ciudad VARCHAR(60),
+    Nombre VARCHAR(255),
+    PRIMARY KEY (ID)
 );
 
- create table viaje(
-	 id int not null,
-	 estado bool,
-	 fin varchar(60),
-	 inicio varchar(60),
-	 primary key(id),
-	 foreign key(fin) references aero(id),
-	 foreign key(inicio) references aero(id)
- );
- 
- 
- create table ejecucion(
- 	id int not null,
-	 hora time,
-	 precio int,
-	 matricula_avion varchar(40),
-	 primary key(id),
-	 foreign key(matricula_avion) references avion(matricula)
- );
---tabla de vuelos
-
---create table vuelo(
---	id int not null,
---	origen varchar(30),
---	destino varchar(30),
---	aero_destino varchar(60),
---	aero_origen varchar(60),
---	hora time,
---	precio int,
---	puerta varchar(20),
---	estado bool,
---	matricula_avion varchar(30),
---	primary key (id),
---	foreign key (matricula_avion) references avion(matricula)
---);
-
---tabla de estudiantes
-
-create table estudiante(
-	carnet varchar(30) not null,
-	universidad varchar(60),
-	correo_usario varchar(40) not null,
-	primary key(carnet),
-	foreign key(correo_usario) references usuario(correo)
+CREATE TABLE Viaje (
+    ID INT NOT NULL,
+    Estado BOOL,
+    Fin VARCHAR(60),
+    Inicio VARCHAR(60),
+    PRIMARY KEY (ID),
+    FOREIGN KEY (Fin) REFERENCES Aero(ID),
+    FOREIGN KEY (Inicio) REFERENCES Aero(ID)
 );
 
-
---tabla de maletas
-create table maleta(
-	numero int not null,
-	peso int,
-	color varchar(20),
-	matricula_avion varchar(30),
-	correo_usuario varchar(40),
-	primary key(numero),
-	foreign key (matricula_avion) references avion(matricula),
-	foreign key (correo_usuario) references usuario(correo)
-
+CREATE TABLE Ejecucion (
+    ID INT NOT NULL,
+    Hora TIME,
+    Precio INT,
+    Matricula_Avion VARCHAR(40),
+    PRIMARY KEY (ID),
+    FOREIGN KEY (Matricula_Avion) REFERENCES Avion(Matricula)
 );
 
---tabla de asientos
-create table asiento(
-	numero int not null,
-	x int,
-	y int,
-	ocupado bool,
-	correo_usuario varchar(40),
-	matricula_avion varchar(40),
-	primary key(numero),
-	foreign key (matricula_avion) references avion(matricula),
-	foreign key (correo_usuario) references usuario(correo)
-	
+-- Tabla de estudiantes
+CREATE TABLE Estudiante (
+    Carnet VARCHAR(30) NOT NULL,
+    Universidad VARCHAR(60),
+    Correo_Usuario VARCHAR(40) NOT NULL,
+    PRIMARY KEY (Carnet),
+    FOREIGN KEY (Correo_Usuario) REFERENCES Usuario(Correo)
 );
 
---tabla de la entidad debil promocion
-
-create table promocion(
-	precio int,
-	fecha_inicio date,
-	fecha_final date,
-	imagen varchar(1000),
-	id_ejecucion int,
-	foreign key (id_ejecucion) references ejecucion(id)
+-- Tabla de maletas
+CREATE TABLE Maleta (
+    Numero INT NOT NULL,
+    Peso INT,
+    Color VARCHAR(20),
+    Matricula_Avion VARCHAR(30),
+    Correo_Usuario VARCHAR(40),
+    PRIMARY KEY (Numero),
+    FOREIGN KEY (Matricula_Avion) REFERENCES Avion(Matricula),
+    FOREIGN KEY (Correo_Usuario) REFERENCES Usuario(Correo)
 );
 
-
---tabla auxiliar que relaciona vuelos con usuarios
-
-create table ejecucionxusuario(
-	id_ejecucion int,
-	correo_usuario varchar(40),
-	foreign key (id_ejecucion) references ejecucion(id),
-	foreign key (correo_usuario) references usuario(correo)
+-- Tabla de asientos
+CREATE TABLE Asiento (
+    Numero INT NOT NULL,
+    X INT,
+    Y INT,
+    Ocupado BOOL,
+    Correo_Usuario VARCHAR(40),
+    Matricula_Avion VARCHAR(40),
+    PRIMARY KEY (Numero),
+    FOREIGN KEY (Matricula_Avion) REFERENCES Avion(Matricula),
+    FOREIGN KEY (Correo_Usuario) REFERENCES Usuario(Correo)
 );
 
-
---tabla de las tarjetas del usuario
-
-create table tarjeta(
-	numero varchar(20) not null,
-	cs int,
-	vencimiento date,
-	correo_usuario varchar(40),
-	primary key (numero),
-	foreign key (correo_usuario) references usuario(correo)
+-- Tabla de la entidad débil promoción
+CREATE TABLE Promocion (
+    Precio INT,
+    Fecha_Inicio DATE,
+    Fecha_Final DATE,
+    Imagen VARCHAR(1000),
+    ID_Ejecucion INT,
+    FOREIGN KEY (ID_Ejecucion) REFERENCES Ejecucion(ID)
 );
 
-create table escala(
-	id_viaje int not null,
-	id_aero varchar(60) not null,
-	foreign key(id_viaje) references viaje(id),
-	foreign key(id_aero) references aero(id)
+-- Tabla auxiliar que relaciona vuelos con usuarios
+CREATE TABLE EjecucionXUsuario (
+    ID_Ejecucion INT,
+    Correo_Usuario VARCHAR(40),
+    FOREIGN KEY (ID_Ejecucion) REFERENCES Ejecucion(ID),
+    FOREIGN KEY (Correo_Usuario) REFERENCES Usuario(Correo)
+);
+
+CREATE TABLE ViajeXEjecuciones (
+    ID_Ejecucion INT,
+    ID_Viaje INT,
+    FOREIGN KEY (ID_Ejecucion) REFERENCES Ejecucion(ID),
+    FOREIGN KEY (ID_Viaje) REFERENCES Viaje(ID)
+);
+
+-- Tabla de las tarjetas del usuario
+CREATE TABLE Tarjeta (
+    Numero VARCHAR(20) NOT NULL,
+    CS INT,
+    Vencimiento DATE,
+    Correo_Usuario VARCHAR(40),
+    PRIMARY KEY (Numero),
+    FOREIGN KEY (Correo_Usuario) REFERENCES Usuario(Correo)
+);
+
+CREATE TABLE Escala (
+    ID_Viaje INT NOT NULL,
+    ID_Aero VARCHAR(60) NOT NULL,
+    FOREIGN KEY (ID_Viaje) REFERENCES Viaje(ID),
+    FOREIGN KEY (ID_Aero) REFERENCES Aero(ID)
 );
