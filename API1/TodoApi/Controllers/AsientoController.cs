@@ -33,7 +33,7 @@ namespace TodoApi.Controllers
 
         // GET: api/Asiento/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Asiento>> GetAsiento(long id)
+        public async Task<ActionResult<Asiento>> GetAsiento(int id)
         {
           if (_context.Asiento == null)
           {
@@ -52,7 +52,7 @@ namespace TodoApi.Controllers
         // PUT: api/Asiento/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsiento(long id, Asiento asiento)
+        public async Task<IActionResult> PutAsiento(int id, Asiento asiento)
         {
             if (id != asiento.Numero)
             {
@@ -97,7 +97,7 @@ namespace TodoApi.Controllers
 
         // DELETE: api/Asiento/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsiento(long id)
+        public async Task<IActionResult> DeleteAsiento(int id)
         {
             if (_context.Asiento == null)
             {
@@ -115,7 +115,7 @@ namespace TodoApi.Controllers
             return NoContent();
         }
 
-        private bool AsientoExists(long id)
+        private bool AsientoExists(int id)
         {
             return (_context.Asiento?.Any(e => e.Numero == id)).GetValueOrDefault();
         }

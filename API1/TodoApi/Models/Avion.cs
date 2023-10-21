@@ -6,7 +6,7 @@ public class Avion
 {
     [Key]
     [Required] //Some collisions with the AvionController, this is a solution 
-    public required string Matricula { get; set; }
+    public  string Matricula { get; set; }
     public string? Modelo { get; set; }
     public int Capacidad { get; set; }
 

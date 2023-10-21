@@ -7,11 +7,12 @@ public class Tarjeta
 {
     [Key]
     [Required]
-    public required string Numero { get; set; } 
+    public string Numero { get; set; } 
     public int Cs { get; set; }
-    public DateTime Fecha {get; set;} //Date and Hour
+    public DateOnly Vencimiento {get; set;} //Date and Hour
     
     [ForeignKey("Correo")]
     public string? Correo_usuario { get; set; }
+    
 
 }
