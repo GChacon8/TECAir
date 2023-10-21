@@ -1,5 +1,5 @@
 -- Insertar datos en la tabla Aero
-INSERT INTO "Aero" ("ID", "Ciudad", "Nombre")
+INSERT INTO "Aero" ("Id", "Ciudad", "Nombre")
 VALUES
 ('SJO', 'San José', 'Aeropuerto Internacional Juan Santamaría'),
 ('BAI', 'Buenos Aires', 'Aeropuerto de Buenos Aires'),
@@ -7,7 +7,7 @@ VALUES
 ('MEX', 'Ciudad de Mexico', 'Aeropuerto Internacional Benito Juárez de la Ciudad de Mexico'),
 ('PTY', 'Ciudad de Panama', 'Aeropuerto Internacional de Tocumen');
 -- Insertar datos en la tabla Viaje
-INSERT INTO "Viaje" ("ID", "Estado")
+INSERT INTO "Viaje" ("Id", "Estado")
 VALUES
 (1, FALSE),
 (2, FALSE),
@@ -15,17 +15,17 @@ VALUES
 -- Vuelo directo a Miami
 UPDATE "Viaje"
 SET "Inicio" = 'SJO', "Fin" = 'MIA'
-WHERE "ID" = 1;
+WHERE "Id" = 1;
 -- Vuelo directo a Argentina
 UPDATE "Viaje"
 SET "Inicio" = 'SJO', "Fin" = 'BAI'
-WHERE "ID" = 2;
+WHERE "Id" = 2;
 -- Vuelo a Miami con escalas
 UPDATE "Viaje"
 SET "Inicio" = 'SJO', "Fin" = 'MIA'
-WHERE "ID" = 3;
+WHERE "Id" = 3;
 -- Insertar datos en la tabla Escala
-INSERT INTO "Escala" ("ID_Viaje", "ID_Aero")
+INSERT INTO "Escala" ("Id_viaje", "Id_aero")
 VALUES (3, 'PTY');
 -- Usuario administrador
 INSERT INTO "Usuario" ("Correo", "Contraseña", "Nombre_1", "Apellido_1", "Pasaporte")

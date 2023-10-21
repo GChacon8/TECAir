@@ -21,39 +21,39 @@ CREATE TABLE "Avion" (
 );
 
 CREATE TABLE "Aero" (
-    "ID" VARCHAR(60) NOT NULL,
+    "Id" VARCHAR(60) NOT NULL,
     "Puerta" VARCHAR(30),
     "Ciudad" VARCHAR(60),
     "Nombre" VARCHAR(255),
-    PRIMARY KEY ("ID")
+    PRIMARY KEY ("Id")
 );
 
 CREATE TABLE "Viaje" (
-    "ID" INT NOT NULL,
+    "Id" INT NOT NULL,
     "Estado" BOOL,
     "Fin" VARCHAR(60),
     "Inicio" VARCHAR(60),
-    PRIMARY KEY ("ID"),
-    FOREIGN KEY ("Fin") REFERENCES "Aero"("ID"),
-    FOREIGN KEY ("Inicio") REFERENCES "Aero"("ID")
+    PRIMARY KEY ("Id"),
+    FOREIGN KEY ("Fin") REFERENCES "Aero"("Id"),
+    FOREIGN KEY ("Inicio") REFERENCES "Aero"("Id")
 );
 
 CREATE TABLE "Ejecucion" (
-    "ID" INT NOT NULL,
+    "Id" INT NOT NULL,
     "Hora" TIME,
     "Precio" INT,
-    "Matricula_Avion" VARCHAR(40),
-    PRIMARY KEY ("ID"),
-    FOREIGN KEY ("Matricula_Avion") REFERENCES "Avion"("Matricula")
+    "Matricula_avion" VARCHAR(40),
+    PRIMARY KEY ("Id"),
+    FOREIGN KEY ("Matricula_avion") REFERENCES "Avion"("Matricula")
 );
 
 -- Tabla de estudiantes
 CREATE TABLE "Estudiante" (
     "Carnet" VARCHAR(30) NOT NULL,
     "Universidad" VARCHAR(60),
-    "Correo_Usuario" VARCHAR(40) NOT NULL,
+    "Correo_usuario" VARCHAR(40) NOT NULL,
     PRIMARY KEY ("Carnet"),
-    FOREIGN KEY ("Correo_Usuario") REFERENCES "Usuario"("Correo")
+    FOREIGN KEY ("Correo_usuario") REFERENCES "Usuario"("Correo")
 );
 
 -- Tabla de maletas
@@ -61,11 +61,11 @@ CREATE TABLE "Maleta" (
     "Numero" INT NOT NULL,
     "Peso" INT,
     "Color" VARCHAR(20),
-    "Matricula_Avion" VARCHAR(30),
-    "Correo_Usuario" VARCHAR(40),
+    "Matricula_avion" VARCHAR(30),
+    "Correo_usuario" VARCHAR(40),
     PRIMARY KEY ("Numero"),
-    FOREIGN KEY ("Matricula_Avion") REFERENCES "Avion"("Matricula"),
-    FOREIGN KEY ("Correo_Usuario") REFERENCES "Usuario"("Correo")
+    FOREIGN KEY ("Matricula_avion") REFERENCES "Avion"("Matricula"),
+    FOREIGN KEY ("Correo_usuario") REFERENCES "Usuario"("Correo")
 );
 
 -- Tabla de asientos
@@ -74,51 +74,51 @@ CREATE TABLE "Asiento" (
     "X" INT,
     "Y" INT,
     "Ocupado" BOOL,
-    "Correo_Usuario" VARCHAR(40),
-    "Matricula_Avion" VARCHAR(40),
+    "Correo_usuario" VARCHAR(40),
+    "Matricula_avion" VARCHAR(40),
     PRIMARY KEY ("Numero"),
-    FOREIGN KEY ("Matricula_Avion") REFERENCES "Avion"("Matricula"),
-    FOREIGN KEY ("Correo_Usuario") REFERENCES "Usuario"("Correo")
+    FOREIGN KEY ("Matricula_avion") REFERENCES "Avion"("Matricula"),
+    FOREIGN KEY ("Correo_usuario") REFERENCES "Usuario"("Correo")
 );
 
 -- Tabla de la entidad débil promoción
 CREATE TABLE "Promocion" (
     "Precio" INT,
-    "Fecha_Inicio" DATE,
-    "Fecha_Final" DATE,
+    "Fecha_inicio" DATE,
+    "Fecha_final" DATE,
     "Imagen" VARCHAR(1000),
-    "ID_Ejecucion" INT,
-    FOREIGN KEY ("ID_Ejecucion") REFERENCES "Ejecucion"("ID")
+    "Id_ejecucion" INT,
+    FOREIGN KEY ("Id_ejecucion") REFERENCES "Ejecucion"("Id")
 );
 
 -- Tabla auxiliar que relaciona vuelos con usuarios
-CREATE TABLE "EjecucionXUsuario" (
-    "ID_Ejecucion" INT,
-    "Correo_Usuario" VARCHAR(40),
-    FOREIGN KEY ("ID_Ejecucion") REFERENCES "Ejecucion"("ID"),
-    FOREIGN KEY ("Correo_Usuario") REFERENCES "Usuario"("Correo")
+CREATE TABLE "Ejecucionxusuario" (
+    "Id_ejecucion" INT,
+    "Correo_usuario" VARCHAR(40),
+    FOREIGN KEY ("Id_ejecucion") REFERENCES "Ejecucion"("Id"),
+    FOREIGN KEY ("Correo_usuario") REFERENCES "Usuario"("Correo")
 );
 
-CREATE TABLE "ViajeXEjecuciones" (
-    "ID_Ejecucion" INT,
-    "ID_Viaje" INT,
-    FOREIGN KEY ("ID_Ejecucion") REFERENCES "Ejecucion"("ID"),
-    FOREIGN KEY ("ID_Viaje") REFERENCES "Viaje"("ID")
+CREATE TABLE "Viajexejecuciones" (
+    "Id_ejecucion" INT,
+    "Id_viaje" INT,
+    FOREIGN KEY ("Id_ejecucion") REFERENCES "Ejecucion"("Id"),
+    FOREIGN KEY ("Id_viaje") REFERENCES "Viaje"("Id")
 );
 
 -- Tabla de las tarjetas del usuario
 CREATE TABLE "Tarjeta" (
     "Numero" VARCHAR(20) NOT NULL,
-    "CS" INT,
+    "Cs" INT,
     "Vencimiento" DATE,
-    "Correo_Usuario" VARCHAR(40),
+    "Correo_usuario" VARCHAR(40),
     PRIMARY KEY ("Numero"),
-    FOREIGN KEY ("Correo_Usuario") REFERENCES "Usuario"("Correo")
+    FOREIGN KEY ("Correo_usuario") REFERENCES "Usuario"("Correo")
 );
 
 CREATE TABLE "Escala" (
-    "ID_Viaje" INT NOT NULL,
-    "ID_Aero" VARCHAR(60) NOT NULL,
-    FOREIGN KEY ("ID_Viaje") REFERENCES "Viaje"("ID"),
-    FOREIGN KEY ("ID_Aero") REFERENCES "Aero"("ID")
+    "Id_viaje" INT NOT NULL,
+    "Id_aero" VARCHAR(60) NOT NULL,
+    FOREIGN KEY ("Id_viaje") REFERENCES "Viaje"("Id"),
+    FOREIGN KEY ("Id_aero") REFERENCES "Aero"("Id")
 );
