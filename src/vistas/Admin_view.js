@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 
 function Admin_view() {
   const [createPromotion, setcreatePromotion] = useState(false);
+  const [Checkin, setcheckin] = useState(false);
+  
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -31,6 +33,13 @@ function Admin_view() {
   const handleAddPromotion = () => {
     setcreatePromotion(true);
     console.log("omggg");
+  }
+
+  const handleCheckin = () => {
+    setcheckin(true);
+    console.log("Checkin!");
+
+    navigate('/TecAir/Checkin');
   }
   
 
@@ -75,7 +84,11 @@ function Admin_view() {
 
       <div className='Admin'>
         <h1>Vista de Administrador</h1>
-        <button type="addPromotion" className="btn btn-info" onClick={() => handleAddPromotion()}>Add Promotion</button>
+        <button type="addPromotion" className="btn btn-info space" onClick={() => handleAddPromotion()}>Add Promotion</button>
+        <h1></h1>  
+        <button type="Checkin" className="btn btn-info space" onClick={() => handleCheckin()}>Check in</button>
+      
+      
       </div>
 
 

@@ -9,6 +9,7 @@ import Login_view from './vistas/Login';
 import Client_view from './vistas/Client_view';
 import Create_user from'./vistas/Create_user';
 import Admin_view from './vistas/Admin_view';
+import Checkin_view from './vistas/Checkin';
 
 import Register_view from './vistas/MovieRegister';
 import Sucursal_view from './vistas/SucursalRegister';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/TecAir" element={<Client_view />} />
           <Route path="/TecAir/Login_Admin" element={<Login_view />} /> 
           <Route path="/Create_user" element={<Create_user />} />
+          <Route path="/TecAir/Checkin" element={<Checkin_view />} />
           
           <Route path="/TecAir/Administration" element={<Admin_view />} />
 
