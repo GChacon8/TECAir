@@ -165,6 +165,15 @@ function Client_view() {
         arrivalTime: "12:00 PM",
         price: "$900",
       },
+      {
+        id: 3,
+        origin: "Ciudad b",
+        destination: "Ciudad F",
+        departureDate: "2023-10-20",
+        departureTime: "10:00 AM",
+        arrivalTime: "12:00 PM",
+        price: "$1999",
+      },
     ];
 
     // Establece los datos de vuelo y detén la carga simulada
