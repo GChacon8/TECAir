@@ -146,7 +146,7 @@ function Client_view() {
   //Búsqueda de vuelos, colocar aquí la llamada del api y modificar "flightsData"
   const searchFlights = () => {
     // Para pruebas, establece los datos de vuelo falsos aquí
-    const testingflightdata = [
+    const testingflightdata = [ 
       {
         id: 1,
         origin: "Ciudad A",
