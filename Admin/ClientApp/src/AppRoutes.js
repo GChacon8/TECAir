@@ -3,6 +3,7 @@ import { Home } from "./components/Home";
 import Admin_view from "./components/Admin_view";
 import Checkin from "./components/Checkin";
 import Login from "./components/Login";
+import Client_view from "./components/Client_view";
 
 const AppRoutes = [
   {
@@ -20,6 +21,10 @@ const AppRoutes = [
   {
     path: '/Checkin',
     element: <Checkin />
+  },
+  {
+    path: '/Client_view',
+    element: <Client_view />
   }
 ];
 

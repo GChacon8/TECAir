@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 
 function Admin_view() {
   const [createPromotion, setcreatePromotion] = useState(false);
-  const [Checkin, setcheckin] = useState(false);
+  const [FlightRegister, setFlightRegister] = useState(false);
   
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
+  const [promotionData, setpromotionData] = useState({
     origin: "",
     destiny: "",
     price: "",
@@ -20,41 +20,42 @@ function Admin_view() {
   });
 
 
-  //por si quiero llamar a alguna función desde un button
-  const handleButtonClick = () => {
-    console.log('SOY UN BOTÓN');
-
-  };
-
+  
   const handleModalClose = () => {
     setcreatePromotion(false);
+    setFlightRegister(false);
   };
 
   const handleAddPromotion = () => {
     setcreatePromotion(true);
-    console.log("omggg");
+  }
+  
+  const handleSubmitPromotion = () => {
+    setcreatePromotion(false);
+    console.log(promotionData);
   }
 
   const handleCheckin = () => {
-    setcheckin(true);
-    console.log("Checkin!");
-
     navigate('/Checkin');
+  }
+
+  const handleFlightRegister=()=>{
+    setFlightRegister(true)
   }
   
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({
-      ...formData,
+    setpromotionData({
+      ...promotionData,
       [name]: value,
     });
   };
 
   const handleImageUpload = (event) => {
     const imageFile = event.target.files[0];
-    setFormData({
-      ...formData,
+    setpromotionData({
+      ...promotionData,
       image: imageFile,
     });
   };
@@ -71,6 +72,11 @@ function Admin_view() {
               <img src={ico} width="150" height="50" alt="" />
             </a>
             <ul className="navbar-nav ml-auto d-flex">
+            <li className="nav-item">
+                <Link className="nav-link" to="/Client_view">
+                  TecAir
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/Login">
                   Log Out
@@ -86,6 +92,8 @@ function Admin_view() {
         <button type="addPromotion" className="btn btn-info space" onClick={() => handleAddPromotion()}>Add Promotion</button>
         <h1></h1>  
         <button type="Checkin" className="btn btn-info space" onClick={() => handleCheckin()}>Check in</button>
+        <h1></h1>
+        <button type="FlightRegister" className="btn btn-info space" onClick={() => handleFlightRegister()}>Flight Register</button>
       
       
       </div>
@@ -95,12 +103,12 @@ function Admin_view() {
           className="modal"
           tabIndex="-1"
           role="dialog"
-          style={{ display: createPromotion ? 'block' : 'none' }}
+          style={{ display: FlightRegister ? 'block' : 'none' }}
         >
           <div className="modal-dialog" role="document">
             <div className="modal-content align_center">
               <div className="modal-header">
-                <h5 className="modal-title">Add Promotion</h5>
+                <h5 className="modal-title">Flight Registration</h5>
               </div>
 
               <div className="modal-body">
@@ -112,7 +120,7 @@ function Admin_view() {
                       type="text"
                       id="origin"
                       name="origin"
-                      value={formData.origin}
+                      value={promotionData.origin}
                       onChange={handleInputChange}
                       required
                     />
@@ -123,7 +131,7 @@ function Admin_view() {
                       type="text"
                       id="destiny"
                       name="destiny"
-                      value={formData.destiny}
+                      value={promotionData.destiny}
                       onChange={handleInputChange}
                       required
                     />
@@ -134,7 +142,7 @@ function Admin_view() {
                       type="text"
                       id="price"
                       name="price"
-                      value={formData.price}
+                      value={promotionData.price}
                       onChange={handleInputChange}
                       required
                     />
@@ -145,7 +153,7 @@ function Admin_view() {
                       type="text"
                       id="duration"
                       name="duration"
-                      value={formData.duration}
+                      value={promotionData.duration}
                       onChange={handleInputChange}
                       required
                     />
@@ -176,7 +184,7 @@ function Admin_view() {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={handleAddPromotion}
+                  onClick={handleSubmitPromotion}
                 >
                   Add Promotion
                 </button>
@@ -184,6 +192,8 @@ function Admin_view() {
             </div>
           </div>
         </div>
+
+
 
 
 
