@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
 import './custom.css';
+import './Css/Main.css';  
+import './Css/Styles.css';
 
 export default class App extends Component {
   static displayName = App.name;
