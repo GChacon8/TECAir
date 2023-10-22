@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ico from "../Images/Ico.jpg"
+import ico from "../Images/Ico.png"
 
 function Client_view() {
   const [origin, setOrigin] = useState('');
@@ -188,8 +188,7 @@ function Client_view() {
         <nav className="navbar navbar-expand-lg  navbar-dark justify-content-between navbarr">
           <div className="container">
             <a className="navbar-brand" href="#">
-              <img src={ico} width="50" height="50" alt="" />
-              TecAir
+              <img src={ico} width="150" height="50" alt="" />
             </a>
 
             <ul className="navbar-nav ml-auto d-flex">  
@@ -202,12 +201,6 @@ function Client_view() {
               <li className="nav-item">
                 <Link className="nav-link" to="/Create_user">
                   Crear Usuario
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to="/Login">
-                  Iniciar Sesión COMO ADMIN (QUITAR)
                 </Link>
               </li>
             </ul>

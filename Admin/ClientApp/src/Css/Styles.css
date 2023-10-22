@@ -1,0 +1,91 @@
+.navbarr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: black;
+}
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  padding: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Admin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: calc(max-width - 10%);
+  padding: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: aqua;
+}
+
+.search {
+  width: 99%;
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: rgb(0, 243, 36);
+}
+
+.space{
+  padding: 5px;
+}
+
+.smallerfont{
+  font-size: medium;
+}
+
+.button_group_space{
+  margin-left: 90px;
+}
+
+.button_separation{
+  margin-left: 20px;
+}
+
+.align_center{
+  
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom_background{
+  background-color: red;
+}
+
+.flights{
+  margin-top: 10px;
+  background-color: rgb(252, 143, 0);
+  text-align: center;
+}
+
+.flight-card {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.flight-card h2, .flight-card p{
+  text-align: left;
+}

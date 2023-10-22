@@ -110,6 +110,10 @@ function CheckinView() {
     console.log(maletas);
   }
 
+  const cancel = () => {
+    navigate('/Admin_view');
+  };
+
   return (
     <div
       style={{
@@ -323,6 +327,12 @@ function CheckinView() {
       <div>
 
         <button className="btn btn-dark" onClick={CreatePDF}>Print Boarding Pass</button>
+
+
+      </div>
+      <div>
+
+        <button className="btn btn-dark" onClick={cancel}>Cancel</button>
 
 
       </div>
