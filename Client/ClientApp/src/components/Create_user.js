@@ -27,6 +27,10 @@ function Create_user() {
       //navigate('/ClientView');
     }
   };
+  
+  const handleCancel = ()=>{
+    navigate("/");
+  }
 
   return (
 
@@ -40,7 +44,7 @@ function Create_user() {
           name="username"
           value={username}
           onChange={handleInputChange}
-          style={{ marginBottom: '10px'}}
+          style={{ marginBottom: '10px' }}
         />
       </div>
       <div>
@@ -51,12 +55,16 @@ function Create_user() {
           name="password"
           value={password}
           onChange={handleInputChange}
-          style={{ marginBottom: '10px'}}
+          style={{ marginBottom: '10px' }}
         />
       </div>
-      <button className="btn btn-primary .btn-xs" onClick={handleSubmit}>
-        Iniciar Sesión
-      </button>
+      <div className='btn-group'>
+        <button className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
+        <button className="btn btn-primary" onClick={handleSubmit}>Sign In</button>
+
+
+      </div>
+
     </div>
   );
 }

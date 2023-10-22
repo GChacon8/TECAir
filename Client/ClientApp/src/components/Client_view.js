@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ico from "../Images/Ico.png"
 
@@ -7,16 +7,21 @@ function Client_view() {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [departureDate, setDepartureDate] = useState('');
- 
+  const navigate = useNavigate();
+
   const [originOptions, setOriginOptions] = useState([]);
   const [DestOptions, setDestOptions] = useState([]);
   const [flightsData, setFlightsData] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [modalLogin, setModalLogin] = useState(true);
   const [selectedFlight, setSelectedFlight] = useState(null);
 
-  const selected_seats = [];
-  const [buttonColor, setButtonColor] = useState('btn-secondary');
 
+  const [buttonColor, setButtonColor] = useState('btn-secondary');
+  const [modalData, setModalData] = useState({
+    username: '',
+    password: '',
+  });
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,11 +35,6 @@ function Client_view() {
 
 
 
-  //Input Handler for payment info
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
 
   /*
@@ -79,57 +79,55 @@ function Client_view() {
     console.log('Fecha de Salida:', departureDate);
   };
 
-  //Botón de realizar reservación y se tienen los datos de flight
 
 
-
-  const changeButtonColor = (id) => {
-    if (buttonColor === 'btn-secondary') {
-      setButtonColor('btn-primary');
-      selected_seats.push(id); // Puedes actualizar la lista de asientos seleccionados aquí
-    } else {
-      setButtonColor('btn-secondary');
-      // Aquí puedes eliminar el asiento de la lista de asientos seleccionados
-    }
-  };
-
-
-  function changeButtonColorToBlue(id) {
-    const button = document.getElementById(id);
-    if (button) {
-      button.style.backgroundColor = 'blue';
-      selected_seats.push(id);
-      console.log(selected_seats);
-    }
-  }
-
-
-
-
-
-
-  const free_seats = () => {
-    selected_seats.splice(0, selected_seats.length);
-  }
-
-  //Para elegir asientos y cerrar la reservación del vuelo
-
-
-  //Closing the modal
-  const handleModalClose = () => {
-    setShowModal(false);
-    free_seats();
-
-  };
-
+  //modal payment
   const handlePayment = () => {
     //add the payment information here
     console.log("Payment Done");
     console.log(formData);
     window.alert("Pago Realizado");
-    
+
     setShowModal(false);
   }
+  //Input Handler for payment info
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  //Closing the modal
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+  //--------------------------------------------------------
+  //Modal Login
+
+  const handleLogin = () => {
+    // Aquí puedes agregar la lógica de inicio de sesión
+    // y validar las credenciales del usuario.
+    console.log("Sesión iniciada");
+    setModalLogin(false);
+  };
+  //chance view
+  const handleCreateUser = () => {
+    console.log("Checkin!");
+    navigate('/Create_user');
+
+  };
+
+  //Close the login modal
+  const handleModalLoginClose = () => {
+    setModalLogin(false);
+  };
+  const handleCreateLogin=()=>{
+    setModalLogin(true);
+  }
+
+
+
+
+
 
   // OBTENER DATOS DEL API AQUÍ
   const Data_for_reserve = () => {
@@ -146,7 +144,7 @@ function Client_view() {
   //Búsqueda de vuelos, colocar aquí la llamada del api y modificar "flightsData"
   const searchFlights = () => {
     // Para pruebas, establece los datos de vuelo falsos aquí
-    const testingflightdata = [ 
+    const testingflightdata = [
       {
         id: 1,
         origin: "Ciudad A",
@@ -177,7 +175,7 @@ function Client_view() {
     ];
 
     // Establece los datos de vuelo y detén la carga simulada
-    
+
     setFlightsData(testingflightdata);
 
   };
@@ -191,18 +189,17 @@ function Client_view() {
               <img src={ico} width="150" height="50" alt="" />
             </a>
 
-            <ul className="navbar-nav ml-auto d-flex">  
-            <li className="nav-item">
+            <ul className="navbar-nav ml-auto d-flex">
+              <li className="nav-item">
                 <Link className="nav-link" to="/Promotions">
                   Promotions
                 </Link>
               </li>
-
               <li className="nav-item">
-                <Link className="nav-link" to="/Create_user">
-                  Crear Usuario
-                </Link>
-              </li>
+  <button className="nav-link button_navbar" onClick={handleCreateLogin}>
+    Log In
+  </button>
+</li>
             </ul>
           </div>
         </nav>
@@ -256,7 +253,7 @@ function Client_view() {
             />
           </div>
 
-         
+
 
           <button type="submit" className="btn btn-info">
             Search Flights
@@ -280,7 +277,7 @@ function Client_view() {
               onClick={() => {
                 setShowModal(true);
                 setSelectedFlight(flight);
-                
+
               }}>Reservar Vuelo</button>
           </div>
         ))}
@@ -300,67 +297,67 @@ function Client_view() {
             </div>
 
             <div className="modal-body">
-      <h1>Detalles de Pago</h1>
-      <form>
-        <div className="form-group">
-          <label htmlFor="first-name">Nombre:</label>
-          <input
-            type="text"
-            id="first-name"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="last-name">Apellido:</label>
-          <input
-            type="text"
-            id="last-name"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="cedula">Cédula:</label>
-          <input
-            type="text"
-            id="cedula"
-            name="cedula"
-            value={formData.cedula}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="email">Correo Electrónico:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="phone">Número de Teléfono:</label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        
-      </form>
-    </div>
+              <h1>Detalles de Pago</h1>
+              <form>
+                <div className="form-group">
+                  <label htmlFor="first-name">Nombre:</label>
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="last-name">Apellido:</label>
+                  <input
+                    type="text"
+                    id="last-name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="cedula">Cédula:</label>
+                  <input
+                    type="text"
+                    id="cedula"
+                    name="cedula"
+                    value={formData.cedula}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email">Correo Electrónico:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Número de Teléfono:</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+
+              </form>
+            </div>
 
             <div className="modal-footer">
               <button
@@ -382,6 +379,89 @@ function Client_view() {
           </div>
         </div>
       </div>
+
+
+
+
+
+      {/* Login Modal  */}
+      <div>
+        <div
+          className="modal"
+          tabIndex="-1"
+          role="dialog"
+          style={{ display: modalLogin ? 'block' : 'none' }}
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Login</h5>
+                <button type="button" className="close" data-dismiss="modal" onClick={handleModalLoginClose} aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+              </div>
+              <div className="modal-body">
+                <form>
+                  <div className="form-group">
+                    <label htmlFor="username">Username:</label>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      value={formData.username}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password:</label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  onClick={handleCreateUser}
+                >
+                  Create User
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleLogin}
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   );
 
