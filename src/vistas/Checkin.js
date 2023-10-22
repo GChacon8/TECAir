@@ -5,16 +5,20 @@ import { Link, useNavigate } from 'react-router-dom';
 function CheckinView() {
   const [usuario, setUsuario] = useState('');
   const [vueloId, setVueloId] = useState('');
+  const [maletas, setMaletas] = useState([{ peso: '', color: '',id: 0}]);
+
   var selectedSeats = [];
-  
+  var numberOfSuitcases = 0;
+
   //variables que deben ser modificadas por el api
-  var seats_reserved = 2;//numero de asientos comprados por el usuarioooo cambiar datos en la llamada del api
+  var seats_reserved = 2;//numero de asientos comprados por el usuarioo
   var reservedSeats = [];
   var seatsAvailable = [];
   //-----------------------------------------
 
   const navigate = useNavigate();
 
+  //handler of the input spaces
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     if (name === 'usuario') {
@@ -24,9 +28,22 @@ function CheckinView() {
     }
   };
 
-  // Poner función para agregar a la base de datos
+  const handleMaleta = (event, index, field) => {
+    const updatedMaletas = [...maletas];
+    updatedMaletas[index][field] = event.target.value;
+    setMaletas(updatedMaletas);
+  };
+
+  const handleAddMaleta = () => {
+    const newId = maletas.length > 0 ? maletas[maletas.length - 1].id + 1 : 0;
+    setMaletas([...maletas, { peso: '', color: '', id: newId }]);
+  };
+  
+
+
+  
   const handleButtonClick = () => {
-    // Variables para pruebas ESTAS VARIABLES SON LAS QUE DEBE TRAER DE LA DB
+    // Variables para pruebas ESTAS VARIABLES SON LAS QUE DEBE TRAER DE LA DB asientos reservados o libres y así
     console.log(usuario);
     console.log(vueloId);
     reservedSeats = ['A1', 'B1', 'C1', 'D1', 'E1', 'F1'];
@@ -55,16 +72,16 @@ function CheckinView() {
   }
 
 
-
+  //Función encargada de la selección del asiento, permite al usuario
+  //cambiar la elección realizada para luego ser enviada a la DB
   const SelectSeat = (id) => {
-    if(seats_reserved>0){
+    if (seats_reserved > 0) {
       const button = document.getElementById(id);
       button.style.backgroundColor = 'blue';
       seats_reserved = seats_reserved - 1;
-      
       selectedSeats.push(id);
-      //console.log(id);
-    }else{
+
+    } else {
       const button0 = document.getElementById(id);
       const button1 = document.getElementById(selectedSeats.shift());
       button0.style.backgroundColor = 'blue';
@@ -72,23 +89,26 @@ function CheckinView() {
       selectedSeats.push(id);
     }
     console.log(selectedSeats);
-   
-    
   }
 
-
-
-
-
-
-
-
-
-  //LLamada al api para revisar si está ocupado o no
-
-
-
-
+  const CreatePDF = () => {
+    //console.log(numberOfSuitcases);
+    numberOfSuitcases = maletas.length;
+    var price = 0;
+    if(numberOfSuitcases > 2){
+      price = 50 + (numberOfSuitcases - 2)*75
+    }else if(numberOfSuitcases === 2){
+        price = 50;
+    }
+    console.log(price);
+    //calculo del precio de las maletas
+    if (selectedSeats.length < seats_reserved) {
+      console.log("seleccione asientos");
+    } else {
+      //CREATE PDF CON TODOS LOS DATOS
+    }
+    console.log(maletas);
+  }
 
   return (
     <div
@@ -102,7 +122,7 @@ function CheckinView() {
     >
       <h1>User Check-in</h1>
       <div>
-        <label htmlFor="usuario">Usuario:</label>
+        <label htmlFor="usuario">User:</label>
         <input
           type="text"
           id="usuario"
@@ -112,7 +132,7 @@ function CheckinView() {
         />
       </div>
       <div className='space'>
-        <label htmlFor="vueloId">Vuelo ID:</label>
+        <label htmlFor="vueloId">Flight ID:</label>
         <input
           type="text"
           id="vueloId"
@@ -121,9 +141,43 @@ function CheckinView() {
           onChange={handleInputChange}
         />
       </div>
-      <button className="btn btn-dark" onClick={handleButtonClick}>
-        Check In
-      </button>
+
+
+
+
+  
+
+      {maletas.map((maleta, index) => (
+        <div key={index} className='space'>
+          <label htmlFor={`pesoMaleta${index}`}>Suitcase Weight {index + 1}:</label>
+          <input
+            type="text"
+            id={`pesoMaleta${index}`}
+            name={`pesoMaleta${index}`}
+            value={maleta.peso}
+            onChange={(e) => handleMaleta(e, index, 'peso')}
+          />
+          <label htmlFor={`colorMaleta${index}`}>Suitcase Color {index + 1}:</label>
+          <input
+            type="text"
+            id={`colorMaleta${index}`}
+            name={`colorMaleta${index}`}
+            value={maleta.color}
+            onChange={(e) => handleMaleta(e, index, 'color')}
+          />
+        </div>
+      ))}
+
+      
+      
+
+
+<div>
+  <button className="btn btn-dark" onClick={handleAddMaleta}>Add Another Suitcase</button>
+      <button className="btn btn-dark button_separation" onClick={handleButtonClick}>Check In</button>
+      
+
+</div>
 
       <div>
         <h1>Available Sits</h1>
@@ -266,23 +320,12 @@ function CheckinView() {
       </div>
       <h1 className='smallerfont'>Back</h1>
 
+      <div>
+
+        <button className="btn btn-dark" onClick={CreatePDF}>Print Boarding Pass</button>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </div>
 
 
 

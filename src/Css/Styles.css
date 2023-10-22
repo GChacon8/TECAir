@@ -57,6 +57,10 @@
   margin-left: 90px;
 }
 
+.button_separation{
+  margin-left: 20px;
+}
+
 .align_center{
   
   flex-direction:column;
