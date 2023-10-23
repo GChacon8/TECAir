@@ -6,6 +6,30 @@
   z-index: 100;
   background-color: rgb(0, 0, 0);
 }
+.promotion-card {
+  margin-top: 100px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: aliceblue;
+  border-radius: 10px; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+  margin-bottom: 20px; 
+}
+
+.promotion-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
 
 .login {
   position: absolute;
@@ -33,6 +57,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: aqua;
 }
 
 .search {
@@ -41,20 +66,14 @@
   text-align: center;
   margin-top: 100px;
   border-radius: 15px;
-  background-color: rgb(0, 243, 36);
+  background-color: #5ab2Da;
+  border-radius: 10px; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+  margin-bottom: 20px; 
 }
 
 .space{
   padding: 5px;
-}
-.btns{
-  background-color: #ccc;
-  border-color: none;
-  margin-left: 10px;
-  width: auto;
-}
-.btn-space{
-  margin-left: 10px;
 }
 
 .smallerfont{
@@ -84,7 +103,8 @@
 
 .flights{
   margin-top: 10px;
-  background-color: rgb(252, 143, 0);
+  background-color: rgb(246, 170, 71);
+  border-radius: 10px; 
   text-align: center;
 }
 
@@ -92,9 +112,10 @@
   background-color: #fff;
   padding: 20px;
   margin: 10px;
-  border: 1px solid #ccc;
+  border: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
 .flight-card h2, .flight-card p{
