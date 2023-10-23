@@ -116,6 +116,14 @@ function Client_view() {
 
   };
 
+  async function handleAPI() {
+    const response = await fetch('weatherforecast');
+    const data = await response.json();
+    console.log(data);
+    window.alert(data);
+
+  };
+
   //Close the login modal
   const handleModalLoginClose = () => {
     setModalLogin(false);
@@ -190,6 +198,11 @@ function Client_view() {
               <li className="nav-item">
                 <button className="nav-link button_navbar" onClick={handleCreateLogin}>
                   Log In
+                </button>
+              </li>
+              <li className="nav-item">
+                <button className="nav-link button_navbar" onClick={handleAPI}>
+                  Test API
                 </button>
               </li>
             </ul>
