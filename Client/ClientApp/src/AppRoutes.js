@@ -2,6 +2,7 @@ import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import Client_view from "./components/Client_view";
 import Create_user from'./components/Create_user';
+import Promotion_view from "./components/Promotion_view";
 
 const AppRoutes = [
   {
@@ -15,6 +16,11 @@ const AppRoutes = [
   {
     path: '/Create_user',
     element: <Create_user />
+  }
+  ,
+  {
+    path: '/Promotions',
+    element: <Promotion_view />
   }
 ];
 

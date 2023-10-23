@@ -8,8 +8,14 @@ import { Link } from 'react-router-dom';
 function Admin_view() {
   const [createPromotion, setcreatePromotion] = useState(false);
   const [FlightRegister, setFlightRegister] = useState(false);
+  const [inputText, setInputText] = useState('');
 
   const navigate = useNavigate();
+
+  const handleTextInputChange = (event) => {
+    setInputText(event.target.value);
+  };
+
 
   const [promotionData, setpromotionData] = useState({
     origin: "",
@@ -92,6 +98,15 @@ function Admin_view() {
 
 
   //----------------
+  const handleOpenFlight =()=>{
+      console.log("ABRIR VUELO");
+  }
+
+  const handleCloseFlight =()=>{
+      console.log("CERRAR VUELOO");
+  }
+
+  //------
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -138,11 +153,29 @@ function Admin_view() {
 
       <div className='Admin'>
         <h1>Administration View</h1>
-        <button type="addPromotion" className="btn btn-info space" onClick={() => handleAddPromotion()}>Add Promotion</button>
+        <button type="addPromotion" className="btn btn-info btns space" onClick={() => handleAddPromotion()}>Add Promotion</button>
         <h1></h1>
-        <button type="Checkin" className="btn btn-info space" onClick={() => handleCheckin()}>Check in</button>
+        <button type="Checkin" className="btn btn-info btns space" onClick={() => handleCheckin()}>Check in</button>
         <h1></h1>
-        <button type="FlightRegister" className="btn btn-info space" onClick={() => handleFlightRegister()}>Flight Register</button>
+        <button type="FlightRegister" className="btn btn-info btns space" onClick={() => handleFlightRegister()}>Flight Register</button>
+        <h1></h1>
+        <div>
+       
+        <input
+          type="text"
+          value={inputText}
+          onChange={handleTextInputChange}
+          placeholder="Enter Flight ID"
+        />
+      </div>
+
+      <div>
+        
+        <button className='btn btn-info btns space' onClick={handleOpenFlight}>Open</button>
+
+        
+        <button className='btn btn-info btns space'  onClick={handleCloseFlight}>Close</button>
+      </div>
 
 
       </div>

@@ -33,7 +33,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: aqua;
 }
 
 .search {
@@ -47,6 +46,15 @@
 
 .space{
   padding: 5px;
+}
+.btns{
+  background-color: #ccc;
+  border-color: none;
+  margin-left: 10px;
+  width: auto;
+}
+.btn-space{
+  margin-left: 10px;
 }
 
 .smallerfont{

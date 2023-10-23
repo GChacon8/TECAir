@@ -104,12 +104,12 @@ function Client_view() {
   //Modal Login
 
   const handleLogin = () => {
-    // Aquí puedes agregar la lógica de inicio de sesión
-    // y validar las credenciales del usuario.
+    //Add Validation of user ID and pasword
     console.log("Sesión iniciada");
     setModalLogin(false);
   };
-  //chance view
+
+  //change route
   const handleCreateUser = () => {
     console.log("Checkin!");
     navigate('/Create_user');
@@ -120,14 +120,9 @@ function Client_view() {
   const handleModalLoginClose = () => {
     setModalLogin(false);
   };
-  const handleCreateLogin=()=>{
+  const handleCreateLogin = () => {
     setModalLogin(true);
   }
-
-
-
-
-
 
   // OBTENER DATOS DEL API AQUÍ
   const Data_for_reserve = () => {
@@ -173,9 +168,6 @@ function Client_view() {
         price: "$1999",
       },
     ];
-
-    // Establece los datos de vuelo y detén la carga simulada
-
     setFlightsData(testingflightdata);
 
   };
@@ -196,10 +188,10 @@ function Client_view() {
                 </Link>
               </li>
               <li className="nav-item">
-  <button className="nav-link button_navbar" onClick={handleCreateLogin}>
-    Log In
-  </button>
-</li>
+                <button className="nav-link button_navbar" onClick={handleCreateLogin}>
+                  Log In
+                </button>
+              </li>
             </ul>
           </div>
         </nav>
@@ -397,8 +389,8 @@ function Client_view() {
               <div className="modal-header">
                 <h5 className="modal-title">Login</h5>
                 <button type="button" className="close" data-dismiss="modal" onClick={handleModalLoginClose} aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
               <div className="modal-body">
                 <form>

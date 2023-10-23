@@ -325,8 +325,8 @@ function CheckinView() {
       <h1 className='smallerfont'>Back</h1>
 
       <div className='space'>
-<button className="btn btn-dark btn-secondary" onClick={cancel}>Cancel</button>
-        <button className="btn btn-dark btn-primary" onClick={CreatePDF}>Checkin</button>
+<button className="btn btn-dark" onClick={cancel}>Cancel</button>
+        <button className="btn btn-dark btn-space " onClick={CreatePDF}>Checkin</button>
 
         
       </div>
