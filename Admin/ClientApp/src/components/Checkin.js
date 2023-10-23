@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from 'react-router-dom';
 
+
 function CheckinView() {
   const [usuario, setUsuario] = useState('');
   const [vueloId, setVueloId] = useState('');
-  const [maletas, setMaletas] = useState([{ peso: '', color: '',id: 0}]);
+  const [maletas, setMaletas] = useState([{ peso: '', color: '', id: 0 }]);
 
   var selectedSeats = [];
   var numberOfSuitcases = 0;
@@ -38,10 +39,10 @@ function CheckinView() {
     const newId = maletas.length > 0 ? maletas[maletas.length - 1].id + 1 : 0;
     setMaletas([...maletas, { peso: '', color: '', id: newId }]);
   };
-  
 
 
-  
+
+
   const handleButtonClick = () => {
     // Variables para pruebas ESTAS VARIABLES SON LAS QUE DEBE TRAER DE LA DB asientos reservados o libres y así
     console.log(usuario);
@@ -95,19 +96,20 @@ function CheckinView() {
     //console.log(numberOfSuitcases);
     numberOfSuitcases = maletas.length;
     var price = 0;
-    if(numberOfSuitcases > 2){
-      price = 50 + (numberOfSuitcases - 2)*75
-    }else if(numberOfSuitcases === 2){
-        price = 50;
+    if (numberOfSuitcases > 2) {
+      price = 50 + (numberOfSuitcases - 2) * 75
+    } else if (numberOfSuitcases === 2) {
+      price = 50;
     }
     console.log(price);
     //calculo del precio de las maletas
     if (selectedSeats.length < seats_reserved) {
       console.log("seleccione asientos");
     } else {
-      //CREATE PDF CON TODOS LOS DATOS
+      console.log("Crear PDF");
     }
     console.log(maletas);
+
   }
 
   const cancel = () => {
@@ -149,7 +151,7 @@ function CheckinView() {
 
 
 
-  
+
 
       {maletas.map((maleta, index) => (
         <div key={index} className='space'>
@@ -172,16 +174,16 @@ function CheckinView() {
         </div>
       ))}
 
-      
-      
 
 
-<div>
-  <button className="btn btn-dark" onClick={handleAddMaleta}>Add Another Suitcase</button>
-      <button className="btn btn-dark button_separation" onClick={handleButtonClick}>Check In</button>
-      
 
-</div>
+
+      <div>
+        <button className="btn btn-dark" onClick={handleAddMaleta}>Add Another Suitcase</button>
+        <button className="btn btn-dark button_separation" onClick={handleButtonClick}>Check In</button>
+
+
+      </div>
 
       <div>
         <h1>Available Sits</h1>
@@ -325,12 +327,12 @@ function CheckinView() {
       <h1 className='smallerfont'>Back</h1>
 
       <div className='space'>
-<button className="btn btn-dark" onClick={cancel}>Cancel</button>
+        <button className="btn btn-dark" onClick={cancel}>Cancel</button>
         <button className="btn btn-dark btn-space " onClick={CreatePDF}>Checkin</button>
 
-        
+
       </div>
-     
+
 
 
 
