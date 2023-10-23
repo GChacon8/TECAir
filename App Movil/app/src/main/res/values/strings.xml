@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">TECAir</string>
+
+    <string name="Welcome">Welcome to TECAIR</string>
+
+    <string name="Login">Login</string>
+    <string name="Register">Register</string>
+    <string name="Enter">Enter</string>
+    <string name="Password">Password</string>
+    <string name="Passport">Passport</string>
+    <string name="Phone_Number">Phone Number</string>
+    <string name="Phone_Num_hint">+506 87 87 87 87</string>
+    <string name="Mail_hint">yourmail@gmail.com</string>
+    <string name="StudentMail_hint">estudiante@estudiantec.cr</string>
+    <string name="Name">Name</string>
+    <string name="LastName">LastName</string>
+    <string name="Student">I\'m Student</string>
+    <string name="University">University</string>
+    <string name="StudentID">Student ID</string>
+    <string name="Back">Back</string>
+    <string name="Passengers">Passengers</string>
+    <string name="Departure">Departure</string>
+    <string name="Return">Return</string>
+    <string name="Next">Next</string>
+    <string name="Payment">Payment</string>
+    <string name="Book">Book flight</string>
+    <string name="Pay">Go to pay</string>
+    <string name="CardNum">Card Number</string>
+    <string name="CV">CV</string>
+    <string name="ExpDate">Expiration Date</string>
+    <string name="Reservation">Reservation Confirmed</string>
+    <string name="Thank_you">Thank you for flying with TECAIR!</string>
+    <string name="Reservation_id">Your reservation id is:</string>
+    <string name="FlightNum">Your Flight number is:</string>
+    <string name="Email">Your Email is:</string>
+    <string name="Menu">Menu</string>
+    <string name="BackMenu">Back to Menu</string>
+    <string name="GotoSearch">Go to Search</string>
+    <string name="GotoPromo">Go to Promotions</string>
+
+
+    <string-array name="Places">
+        <item>Buenos Aires</item>
+        <item>Santiago de Chile</item>
+        <item>El Salvador</item>
+        <item>San Jose</item>
+        <item>San Francisco</item>
+    </string-array>
+
+
+</resources>
